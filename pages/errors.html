@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Gestion des erreurs</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Gestion des erreurs</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#get">Intercepter une erreur</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#network">Gérer les erreurs réseau</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#display">Afficher les erreurs à l'utilisateur</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#create">Créer ses propres erreurs</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#errors">Erreurs fréquentes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#exercises">Exercices</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="get">
+            <h2>Intercepter une erreur</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Une erreur peut interrompre un programme. Pour l’intercepter, on
+                        utilise<span class="comment"> try </span>/<span class="comment"> catch</span>.
+                        Le code dans<span class="comment"> try </span> est exécuté normalement ; si une erreur survient,
+                        on passe dans<span class="comment"> catch</span>.
+                    </p>
+
+                    <pre class="js"><code><span class="word">try</span> {
+    <span class="word">const</span> x = JSON.<span class="function">parse</span>(<span class="text">"{ mauvais json }"</span>);
+    console.<span class="function">log</span>(x);
+} <span class="word">catch</span> (err) {
+    console.<span class="function">log</span>(<span class="text">"Erreur interceptée :"</span>, err.message);
+}</code></pre>
+
+                    <p>
+                        On peut aussi utiliser<span class="comment"> finally </span>: il s’exécute dans tous les cas
+                        (succès ou échec).
+                    </p>
+
+                    <pre class="js"><code><span class="word">try</span> {
+    console.<span class="function">log</span>(<span class="text">"Début"</span>);
+    <span class="word">throw</span> <span class="word">new</span> <span class="function">Error</span>(<span class="text">"Problème"</span>);
+} <span class="word">catch</span> (err) {
+    console.<span class="function">log</span>(<span class="text">"Catch :"</span>, err.message);
+} <span class="word">finally</span> {
+    console.<span class="function">log</span>(<span class="text">"Enfin : je m'exécute toujours"</span>);
+}</code></pre>
+
+                    <p>
+                        <span class="comment">try </span>/<span class="comment"> catch </span> sert à gérer l’imprévu
+                        (données invalides, réseau, erreurs de logique).
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/get.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="network">
+            <h2>Gérer les erreurs réseau</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Avec<span class="comment"> fetch</span>, il y a 2 types d’erreurs courantes :
+                    </p>
+                    <ul>
+                        <li>erreur réseau (pas de connexion, DNS, CORS…) : la Promise passe dans<span class="comment"> catch</span>.</li>
+                        <li>erreur HTTP (404, 500…) :<span class="comment"> fetch </span> réussit, mais<span class="comment"> response.ok </span>vaut<span class="comment"> false</span>.</li>
+                    </ul>
+
+                    <pre class="js"><code><span class="word">fetch</span>(<span class="text">"/api/eleves/"</span>)
+    .<span class="function">then</span>((response) => {
+        <span class="word">if</span> (!response.ok) {
+            <span class="word">throw</span> <span class="word">new</span> <span class="function">Error</span>(<span class="text">"HTTP "</span> + response.status);
+        }
+        <span class="word">return</span> response.<span class="function">json</span>();
+    })
+    .<span class="function">then</span>((data) => {
+        console.<span class="function">log</span>(data);
+    })
+    .<span class="function">catch</span>((err) => {
+        console.<span class="function">log</span>(<span class="text">"Erreur réseau ou HTTP :"</span>, err.message);
+    });</code></pre>
+
+                    <p>
+                        La version<span class="comment"> async </span>/<span class="comment"> await </span>est
+                        souvent plus lisible :
+                    </p>
+
+                    <pre class="js"><code><span class="word">async</span> <span class="word">function</span> chargerEleves() {
+    <span class="word">try</span> {
+        <span class="word">const</span> response = <span class="word">await</span> <span class="word">fetch</span>(<span class="text">"/api/eleves/"</span>);
+
+        <span class="word">if</span> (!response.ok) {
+            <span class="word">throw</span> <span class="word">new</span> <span class="function">Error</span>(<span class="text">"HTTP "</span> + response.status);
+        }
+
+        <span class="word">return</span> <span class="word">await</span> response.<span class="function">json</span>();
+    } <span class="word">catch</span> (err) {
+        console.<span class="function">log</span>(<span class="text">"Erreur :"</span>, err.message);
+        <span class="word">return</span> [];
+    }
+}</code></pre>
+
+                    <p>
+                        Ici, on renvoie <span class="comment">[]</span> en cas d’échec : c’est une stratégie simple et robuste
+                        pour éviter de casser la suite du programme.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/network.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="display">
+            <h2>Afficher les erreurs à l'utilisateur</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Dans une application, on doit souvent afficher un message clair à l’utilisateur, tout en
+                        gardant le détail technique dans la console. On utilise souvent une fonction qui centralise
+                        l’affichage.
+                    </p>
+
+                    <pre class="js"><code><span class="word">function</span> <span class="function">afficherErreur</span>(messageUtilisateur, err) {
+    console.<span class="function">log</span>(<span class="text">"Détail :"</span>, err);
+
+    <span class="word">const</span> zone = document.<span class="function">querySelector</span>(<span class="text">"#error"</span>);
+    <span class="word">if</span> (zone) {
+        zone.textContent = messageUtilisateur;
+        zone.classList.<span class="function">add</span>(<span class="text">"visible"</span>);
+    }
+}</code></pre>
+
+                    <p>
+                        Exemple d’utilisation avec<span class="comment"> fetch </span>:
+                    </p>
+
+                    <pre class="js"><code><span class="word">fetch</span>(<span class="text">"/api/eleves/"</span>)
+    .<span class="function">then</span>((response) => {
+        <span class="word">if</span> (!response.ok) {
+            <span class="word">throw</span> <span class="word">new</span> <span class="function">Error</span>(<span class="text">"HTTP "</span> + response.status);
+        }
+        <span class="word">return</span> response.json();
+    })
+    .<span class="function">catch</span>((err) => {
+        <span class="function">afficherErreur</span>(<span class="text">"Impossible de charger les données."</span>, err);
+    });</code></pre>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/display.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="create">
+            <h2>Créer ses propres erreurs</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        On peut créer une erreur volontairement avec<span class="comment"> throw</span>. C’est utile
+                        pour valider des données et arrêter un traitement si une condition n’est pas respectée.
+                    </p>
+
+                    <pre class="js"><code><span class="word">function</span> <span class="function">diviser</span>(a, b) {
+    <span class="word">if</span> (b === <span class="number">0</span>) {
+        <span class="word">throw</span> <span class="word">new</span> <span class="function">Error</span>(<span class="text">"Division par zéro"</span>);
+    }
+    <span class="word">return</span> a / b;
+}
+
+<span class="word">try</span> {
+    console.<span class="function">log</span>(<span class="function">diviser</span>(<span class="number">10</span>, <span class="number">0</span>));
+} <span class="word">catch</span> (err) {
+    console.<span class="function">log</span>(err.message);
+}</code></pre>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/create.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="errors">
+            <h2>Erreurs fréquentes</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>
+                            Utiliser<span class="comment"> try </span>/<span class="comment"> catch </span>pour masquer un bug
+                            :<span class="error">le problème revient plus tard</span>.
+                        </li>
+                        <li>
+                            Oublier de tester<span class="comment"> response.ok </span>avec<span class="comment"> fetch</span>
+                            :<span class="error"> les erreurs 404/500 ne sont pas interceptées comme prévu</span>.
+                        </li>
+                        <li>
+                            Oublier que<span class="comment"> JSON.parse </span>peut lever une exception
+                            :<span class="error"> plantage si le JSON est invalide</span>.
+                        </li>
+                        <li>
+                            Attraper une erreur et ne rien faire
+                            :<span class="error"> débogage difficile</span>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="exercises">
+            <h2>Exercices</h2>
+            <ol>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire du code :</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code><span class="word">try</span> {
+    console.<span class="function">log</span>(<span class="text">"A"</span>);
+    JSON.<span class="function">parse</span>(<span class="text">"{bad json}"</span>);
+    console.<span class="function">log</span>(<span class="text">"B"</span>);
+} <span class="word">catch</span> (err) {
+    console.<span class="function">log</span>(<span class="text">"C"</span>);
+} <span class="word">finally</span> {
+    console.<span class="function">log</span>(<span class="text">"D"</span>);
+}</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire et écrire du code : corriger les erreurs du code suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code><span class="word">fetch</span>(<span class="text">"/api/eleves/"</span>)
+    .<span class="function">then</span>((r) => r.<span class="function">json</span>())
+    .<span class="function">then</span>((data) => console.<span class="function">log</span>(data))
+    .<span class="function">catch</span>((err) => console.<span class="function">log</span>(err));</code></pre>
+
+                            <p>L'objectif est de gérer aussi les erreurs HTTP (404/500).</p>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Écrire du code : coder le programme suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <ul>
+                                <li>Écrire une fonction<span class="comment"> safeParse </span>qui prend une chaîne JSON.</li>
+                                <li>Si le JSON est valide, la fonction renvoie l’objet.</li>
+                                <li>Si le JSON est invalide, la fonction renvoie un message d’erreur lisible, sous forme
+                                    d’objet : <span class="comment">{ data, error }</span>).</li>
+                            </ul>
+                        </div>
+
+                        <div class="layout__video">
+                            <video preload="none" controls controlsList="nodownload" preload="metadata">
+                                <source src="../assets/errors/ex3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

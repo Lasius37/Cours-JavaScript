@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Fonctions</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Fonctions</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#function">Créer et utiliser une fonction</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#arrow">Écrire une fonction fléchée</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#param">Passer des paramètres à une fonction</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#callback">Utiliser une fonction comme paramètre</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#scope">Comprendre la portée des variables</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#errors">Erreurs fréquentes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#exercises">Exercices</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section ======================================================================================= -->
+        <section id="function">
+            <h2>Créer et utiliser une fonction</h2>
+            <div class="layout">
+
+                <div class="layout__text">
+                    <p>
+                        Une fonction est un bloc de code qu’on peut réutiliser. Elle peut recevoir des données
+                        (paramètres) et renvoyer un résultat avec<span class="comment"> return</span>.
+                    </p>
+                    <ul>
+                        <li>Créer une fonction :
+                            <pre class="js"><code><span class="word">function</span> <span class="function">direBonjour</span>() {
+    console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
+}</code></pre>
+                        </li>
+                        <li>Appeler une fonction (la déclencher) :
+                            <pre class="js"><code><span class="function">direBonjour</span>(); <span class="comment">&nbsp;// affiche "Bonjour !"</span></code></pre>
+                        </li>
+                        <li>Renvoyer une valeur :
+                            <pre class="js"><code><span class="word">function</span> <span class="function">carre</span>(x) {
+    <span class="word">return</span> x ** <span class="number">2</span>;
+}
+
+<span class="word">let</span> resultat = <span class="function">carre</span>(<span class="number">5</span>);
+console.<span class="function">log</span>(resultat); <span class="comment">&nbsp;// 25</span></code></pre>
+                        </li>
+                    </ul>
+                    <p>
+                        <span class="comment">return </span>arrête la fonction immédiatement et renvoie la valeur.
+                        Sans<span class="comment"> return</span>, la fonction renvoie<span class="comment"> undefined</span>.
+                    </p>
+                </div>
+
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/functions/function.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section ======================================================================================= -->
+        <section id="arrow">
+            <h2>Écrire une fonction fléchée</h2>
+            <div class="layout">
+
+                <div class="layout__text">
+                    <p>
+                        Une fonction fléchée (arrow function) est une écriture plus courte. Elle est très utilisée
+                        en JavaScript moderne.
+                    </p>
+                    <ul>
+                        <li>Exemple simple :
+                            <pre class="js"><code><span class="word">const</span> direBonjour = () => {
+    console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
+};
+
+<span class="function">direBonjour</span>();</code></pre>
+                        </li>
+                        <li>Un paramètre :
+                            <pre class="js"><code><span class="word">const</span> carre = (x) => {
+    <span class="word">return</span> x ** <span class="number">2</span>;
+};</code></pre>
+                        </li>
+                        <li>Version courte (return implicite) :
+                            <pre class="js"><code><span class="word">const</span> carre = (x) => x ** <span class="number">2</span>;</code></pre>
+                        </li>
+                    </ul>
+                    <p>
+                        Si la fonction ne contient qu’une seule expression, on peut supprimer
+                        les<span class="comment"> {} </span>et<span class="comment"> return</span>.
+                    </p>
+                </div>
+
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/functions/arrow.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section ======================================================================================= -->
+        <section id="param">
+            <h2>Passer des paramètres à une fonction</h2>
+            <div class="layout">
+
+                <div class="layout__text">
+                    <p>
+                        Les paramètres permettent de rendre une fonction générique. On passes des arguments au
+                        moment de l’appel.
+                    </p>
+                    <ul>
+                        <li>Plusieurs paramètres :
+                            <pre class="js"><code><span class="word">function</span> <span class="function">somme</span>(a, b) {
+    <span class="word">return</span> a + b;
+}
+
+console.<span class="function">log</span>(<span class="function">somme</span>(<span class="number">3</span>, <span class="number">7</span>)); <span class="comment">&nbsp;// 10</span></code></pre>
+                        </li>
+                        <li>Paramètre optionnel (valeur par défaut) :
+                            <pre class="js"><code><span class="word">function</span> <span class="function">saluer</span>(nom = <span class="text">"inconnu"</span>) {
+    console.<span class="function">log</span>(<span class="text">`Bonjour ${nom} !`</span>);
+}
+
+<span class="function">saluer</span>(<span class="text">"Paul"</span>);
+<span class="function">saluer</span>(); <span class="comment">&nbsp;// utilise "inconnu"</span></code></pre>
+                        </li>
+                        <li>Retourner un résultat “utilisable” :
+                            <pre class="js"><code><span class="word">const</span> ttc = (prixHT, taux = <span class="number">0.2</span>) => prixHT * (<span class="number">1</span> + taux);
+
+<span class="word">let</span> prix = ttc(<span class="number">100</span>);
+console.<span class="function">log</span>(prix);</code></pre>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/functions/param.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section ======================================================================================= -->
+        <section id="callback">
+            <h2>Utiliser une fonction comme paramètre</h2>
+            <div class="layout">
+
+                <div class="layout__text">
+                    <p>
+                        En JavaScript, une fonction est une valeur : on peut la stocker dans une variable,
+                        et la passer comme paramètre. On appelle ça une<span class="comment"> callback</span>.
+                    </p>
+                    <p>
+                        Une callback permet de déléguer un comportement : on transmet à une fonction ce qu’elle devra
+                        exécuter à un moment précis. Elles sont très utilisées pour déclencher une action après un
+                        événement, une validation ou une opération asynchrone.
+                    </p>
+                    <pre class="js"><code><span class="word">function</span> <span class="function">executer</span>(action) {
+    action(); <span class="comment">&nbsp;// on exécute la fonction reçue</span>
+}
+
+<span class="word">const</span> direBonjour = () => {
+    console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
+};
+
+<span class="function">executer</span>(direBonjour);</code></pre>
+                </div>
+
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/functions/callback.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section ======================================================================================= -->
+        <section id="scope">
+            <h2>Comprendre la portée des variables</h2>
+            <div class="layout">
+
+                <div class="layout__text">
+                    <p>
+                        La portée (scope) d’une variable indique où elle est accessible.
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="comment">let</span> et <span class="comment">const</span> ont une portée de
+                            bloc (entre<span class="comment"> {}</span>).
+                        </li>
+                        <li>
+                            Une variable déclarée dans une fonction n’existe pas en dehors.
+                        </li>
+                    </ul>
+                    <pre class="js"><code><span class="word">function</span> <span class="function">exemple</span>() {
+    <span class="word">let</span> x = <span class="number">10</span>; <span class="comment">&nbsp;// x est locale à la fonction</span>
+
+    <span class="word">if</span> (x > <span class="number">5</span>) {
+        <span class="word">const</span> msg = <span class="text">"x est grand"</span>; <span class="comment">&nbsp;// msg existe seulement dans le if</span>
+        console.<span class="function">log</span>(msg);
+    }
+
+    <span class="comment">// console.log(msg); -> ReferenceError (msg n'existe pas ici)</span>
+}
+
+<span class="function">exemple</span>();</code></pre>
+                </div>
+
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/functions/scope.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section ======================================================================================= -->
+        <section id="errors">
+            <h2>Erreurs fréquentes</h2>
+            <div class="layout">
+                <div class="layout__text">
+                    <ul>
+                        <li>
+                            Oublier d’appeler la fonction (<span class="comment">()</span>)
+                            :<span class="error"> la fonction ne s’exécute pas</span>.
+                        </li>
+                        <li>
+                            Confondre <span class="comment">return</span> et <span class="comment">console.log</span>
+                            :<span class="error"> on affiche, mais on ne renvoie rien</span>.
+                        </li>
+                        <li>
+                            Utiliser une variable créée dans un bloc en dehors du bloc
+                            :<span class="code error"> ReferenceError</span>.
+                        </li>
+                        <li>
+                            Modifier un paramètre sans vérifier son type
+                            :<span class="error"> comportement inattendu</span>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section ======================================================================================= -->
+        <section id="exercises">
+            <h2>Exercices</h2>
+            <ol>
+
+                <!-- exercise 1 -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire du code : que vaut <span class="comment">resultat</span> ?</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code>function f(x) {
+    return x + 2;
+}
+
+let resultat = f(5) * f(1);
+console.log(resultat);</code></pre>
+                            <ul>
+                                <li><span class="comment">7</span></li>
+                                <li><span class="comment">21</span></li>
+                                <li><span class="comment">49</span></li>
+                                <li><span class="comment">Erreur</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise 2 -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire et écrire du code : corriger les erreurs du code suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code>const carre = (x) => {
+    x ** 2
+}
+
+console.log(carre(4));</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise 3 -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Écrire du code : coder le programme suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <ul>
+                                <li>
+                                    Créer une fonction<span class="comment"> estPair </span>qui
+                                    renvoie<span class="comment"> true </span> si un nombre est pair,
+                                    sinon <span class="comment"> false</span>.
+                                </li>
+                                <li>Demander à l’utilisateur un nombre entier.</li>
+                                <li>
+                                    Afficher dans la console<span class="comment"> "pair" </span>
+                                    ou<span class="comment"> "impair" </span>.
+                                </li>
+                                <li>
+                                    Bonus : si l’utilisateur tape autre chose qu’un nombre,
+                                    afficher<span class="comment"> "saisie invalide"</span>.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="layout__video">
+                            <video preload="none" controls controlsList="nodownload" preload="metadata">
+                                <source src="../assets/functions/ex3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </li>
+
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

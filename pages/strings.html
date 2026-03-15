@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Chaînes de caractères</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Chaînes de caractères</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#manipulate">Manipuler du texte</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#slice">Découper une chaîne</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#transform">Transformer une chaîne</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#search">Rechercher dans une chaîne</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#errors">Erreurs fréquentes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#exercises">Exercices</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="manipulate">
+            <h2>Manipuler du texte</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Une chaîne de caractères (<span class="comment">string</span>) représente du texte. En
+                        JavaScript, une chaîne est immutable : on ne peut pas modifier directement ses caractères.
+                        On crée donc une nouvelle chaîne à partir de l’ancienne.
+                    </p>
+
+                    <ul>
+                        <li>Concaténer deux chaînes :
+                            <pre class="js"><code><span class="word">const</span> prenom = <span class="text">"Alice"</span>;
+<span class="word">const</span> phrase = <span class="text">"Bonjour "</span> + prenom + <span class="text">" !"</span>;
+console.<span class="function">log</span>(phrase);</code></pre>
+                        </li>
+
+                        <li>Utiliser un template string (recommandé) :
+                            <pre class="js"><code><span class="word">const</span> age = <span class="number">12</span>;
+<span class="word">const</span> phrase = <span class="text">`Je m'appelle ${prenom} et j'ai ${age} ans.`</span>;
+console.<span class="function">log</span>(phrase);</code></pre>
+                        </li>
+
+                        <li>Accéder à un caractère :
+                            <pre class="js"><code><span class="word">const</span> mot = <span class="text">"Python"</span>;
+console.<span class="function">log</span>(mot[<span class="number">0</span>]); <span class="comment">&nbsp;// "P"</span></code></pre>
+                        </li>
+
+                        <li>Longueur d’une chaîne :
+                            <pre class="js"><code>console.<span class="function">log</span>(mot.<span class="comment">length</span>); <span class="comment">&nbsp;// 6</span></code></pre>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Pour manipuler du texte efficacement, on combine<span class="comment"> length</span>,
+                        découpage, transformation, et recherche.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/strings/manipulate.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="slice">
+            <h2>Découper une chaîne</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Découper une chaîne sert à extraire une partie du texte : un mot, un préfixe, une extension de fichier,
+                        un morceau entre deux positions.
+                    </p>
+
+                    <ul>
+                        <li>Extraire avec<span class="comment"> slice</span> :
+                            <pre class="js"><code><span class="word">const</span> mot = <span class="text">"javascript"</span>;
+
+console.<span class="function">log</span>(mot.<span class="function">slice</span>(<span class="number">0</span>, <span class="number">4</span>)); <span class="comment">&nbsp;// "java"</span>
+console.<span class="function">log</span>(mot.<span class="function">slice</span>(<span class="number">4</span>));    <span class="comment">&nbsp;// "script"</span></code></pre>
+                            <p><span class="comment">slice </span>renvoie une nouvelle chaîne de caractères.</p>
+                        </li>
+
+                        <li>Utiliser des indices négatifs (à partir de la fin) :
+                            <pre class="js"><code><span class="word">const</span> fichier = <span class="text">"notes.json"</span>;
+
+console.<span class="function">log</span>(fichier.<span class="function">slice</span>(-<span class="number">4</span>)); <span class="comment">&nbsp;// "json"</span></code></pre>
+                        </li>
+
+                        <li>Découper en morceaux avec<span class="comment"> split </span>:
+                            <pre class="js"><code><span class="word">const</span> phrase = <span class="text">"pomme,banane,orange"</span>;
+<span class="word">const</span> morceaux = phrase.<span class="function">split</span>(<span class="text">","</span>);
+
+console.<span class="function">log</span>(morceaux); <span class="comment">&nbsp;// ["pomme","banane","orange"]</span></code></pre>
+                            <p><span class="comment">split </span>renvoie un tableau.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/strings/slice.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="transform">
+            <h2>Transformer une chaîne</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Transformer une chaîne sert à normaliser du texte : enlever des espaces,
+                        uniformiser la casse, remplacer un morceau, formater une saisie utilisateur.
+                    </p>
+
+                    <ul>
+                        <li>Mettre en majuscules / minuscules :
+                            <pre class="js"><code><span class="word">const</span> mot = <span class="text">"JavaScript"</span>;
+
+console.<span class="function">log</span>(mot.<span class="function">toUpperCase</span>()); <span class="comment">&nbsp;// "JAVASCRIPT"</span>
+console.<span class="function">log</span>(mot.<span class="function">toLowerCase</span>()); <span class="comment">&nbsp;// "javascript"</span></code></pre>
+                        </li>
+
+                        <li>Supprimer les espaces au début/fin avec<span class="comment"> trim</span> :
+                            <pre class="js"><code><span class="word">const</span> saisie = <span class="text">"   Alice   "</span>;
+console.<span class="function">log</span>(saisie.<span class="function">trim</span>()); <span class="comment">&nbsp;// "Alice"</span></code></pre>
+                        </li>
+
+                        <li>Remplacer du texte :
+                            <pre class="js"><code><span class="word">const</span> phrase = <span class="text">"Bonjour Paul"</span>;
+console.<span class="function">log</span>(phrase.<span class="function">replace</span>(<span class="text">"Paul"</span>, <span class="text">"Alice"</span>));</code></pre>
+                        </li>
+
+                        <li>Remplacer plusieurs occurrences :
+                            <pre class="js"><code><span class="word">const</span> phrase = <span class="text">"a-a-a"</span>;
+console.<span class="function">log</span>(phrase.<span class="function">replaceAll</span>(<span class="text">"a"</span>, <span class="text">"b"</span>)); <span class="comment">&nbsp;// "b-b-b"</span></code></pre>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/strings/transform.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="search">
+            <h2>Rechercher dans une chaîne</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Rechercher dans une chaîne sert à vérifier si un texte contient un mot, trouver une position,
+                        ou contrôler la présence d'un caractère par exemple.
+                    </p>
+
+                    <ul>
+                        <li>Vérifier si un texte contient quelque chose :<span class="comment"> includes</span>
+                            <pre class="js"><code><span class="word">const</span> phrase = <span class="text">"Bienvenue sur le site"</span>;
+console.<span class="function">log</span>(phrase.<span class="function">includes</span>(<span class="text">"site"</span>)); <span class="comment">&nbsp;// true</span></code></pre>
+                        </li>
+
+                        <li>Trouver la position :<span class="comment"> indexOf</span>
+                            <pre class="js"><code><span class="word">const</span> email = <span class="text">"alice@mail.com"</span>;
+console.<span class="function">log</span>(email.<span class="function">indexOf</span>(<span class="text">"@"</span>)); <span class="comment">&nbsp;// 5</span></code></pre>
+                        </li>
+
+                        <li>Vérifier le début ou la fin :
+                            <pre class="js"><code><span class="word">const</span> fichier = <span class="text">"notes.json"</span>;
+
+console.<span class="function">log</span>(fichier.<span class="function">startsWith</span>(<span class="text">"notes"</span>)); <span class="comment">&nbsp;// true</span>
+console.<span class="function">log</span>(fichier.<span class="function">endsWith</span>(<span class="text">".json"</span>)); <span class="comment">&nbsp;// true</span></code></pre>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/strings/search.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="errors">
+            <h2>Erreurs fréquentes</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>
+                            Oublier que les chaînes sont immutables
+                            :<span class="error"> les méthodes renvoient une nouvelle chaîne</span>.
+                        </li>
+                        <li>
+                            Confondre <span class="comment"> slice </span>et<span class="comment"> split </span>
+                            :<span class="error"> slice renvoie une chaîne, split renvoie un tableau</span>.
+                        </li>
+                        <li>
+                            Comparer du texte sans normaliser (espaces, casse)
+                            :<span class="error"> comparaisons fausses</span>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="exercises">
+            <h2>Exercices</h2>
+            <ol>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire du code : que va afficher la console ?</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code>const texte = "  JavaScript  ";
+const result = texte.trim().toLowerCase();
+
+console.log(result);
+console.log(result.length);</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire et écrire du code : corriger les erreurs du code suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <p>Objectif : afficher "OK" uniquement si l'email n'a pas d'espaces et se termine par ".com".</p>
+                            <pre class="js"><code>const email = " alice@mail.com ";
+
+if (email.includes("@")) {
+    console.log("OK");
+}</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Écrire du code : coder le programme suivant.</h3>
+                    <div class="layout">
+
+                        <div class="layout__text">
+                            <ul>
+                                <li>Demander à l’utilisateur une phrase.</li>
+                                <li>Nettoyer la phrase, la mettre en minuscules.</li>
+                                <li>Afficher<span class="comment"> true </span>si la phrase contient le mot<span class="comment"> "danger"</span>, sinon<span class="comment"> false</span>.</li>
+                                <li>Compter combien de fois le caractère<span class="comment"> "a" </span>apparaît dans la phrase.</li>
+                            </ul>
+                        </div>
+
+                        <div class="layout__video">
+                            <video preload="none" controls controlsList="nodownload" preload="metadata">
+                                <source src="../assets/strings/ex3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

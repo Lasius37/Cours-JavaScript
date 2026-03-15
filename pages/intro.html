@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Introduction</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Introduction</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#link">Relier un fichier<span> .js </span>à un fichier<span> .html</span></a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#launch">Lancer un programme en JavaScript</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#errors">Erreurs fréquentes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#exercises">Exercices</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="link">
+            <h2>Relier un fichier<span> .js </span>à un fichier<span> .html</span>.</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Le code JavaScript se place dans un fichier<span> .js</span>.
+                        On l'appelle dans le fichier <span> .html</span>.
+                    </p>
+                    <pre class="html"><code>&lt;head&gt;
+    ...
+    &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;
+<span class="comment">&lt;!-- La balise &lt;script&gt; se place à la fin du &lt;head&gt; --&gt;
+&lt;!-- defer permet de lancer le script à la fin du chargement du fichier html --&gt;</span></code></pre>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/intro/link.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="launch">
+            <h2>Lancer un programme en JavaScript</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>Pour l'instant, on affiche le résultat du programme uniquement dans la console du navigateur. Pour cela,</p>
+                    <ul>
+                        <li>On appelle la console dans le fichier<span> .js</span>.
+                            <pre class="js"><code>console.<span class="function">log</span>(<span class="text">"Bonjour en JavaScript !"</span>);</code></pre>
+                        </li>
+                        <li>Dans le navigateur, on inspecte la page (touche <kbd>F12</kbd>).
+                            <img src="../images/screenshot.png" alt="Capture d'écran de la console du navigateur">
+                            Le contenu du message s'affiche dans la console. Attention, rien n'apparaît sur la page web.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/intro/launch.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="errors">
+            <h2>Erreurs fréquentes</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>Oubli de lien du fichier<span> .js </span>au fichier<span> .html</span> : <span class="error">pas d'affichage en console</span>.</li>
+                        <li>Erreur de chemin ou de nom du fichier<span> .js </span> : <span class="error">pas d'affichage en console</span>.</li>
+                        <li>Oubli de<span> defer </span> dans la balise <span> &lt;script&gt;</span> : <span class="error">lancement prématuré du programme</span>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="exercises">
+            <h2>Exercices</h2>
+            <ol>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire du code : qu'affiche le code suivant ?</h3>
+                    <div class="layout">
+
+                        <!-- layout element - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --->
+                        <div class="layout__text">
+                            <pre class="js"><code>console.log("Hello");
+console.log("JavaScript");</code></pre>
+                            <ul>
+                                <li>message d'erreur</li>
+                                <li><span class="comment">Hello JavaScript</span></li>
+                                <li><span class="comment">Hello<br>
+JavaScript</span></li>
+                                <li><span class="comment">Hello</span>, puis<br>
+<span class="comment">JavaScript</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire et écrire du code : corriger les erreurs du code suivant.</h3>
+                    <div class="layout">
+
+                        <!-- layout element - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --->
+                        <div class="layout__text">
+                            <p>Contenu du fichier<span> index.html </span>:</p>
+                            <pre class="html"><code>&lt;script href="script.js"&gt;</code></pre>
+                            <p>Contenu du fichier<span> script.js </span>:</p>
+                            <pre class="js"><code>console(Bonjour");</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Écrire du code : coder le programme suivant.</h3>
+                    <div class="layout">
+
+                        <!-- layout element - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --->
+                        <div class="layout__text">
+                            <p>Afficher "Bonjour tout le monde !" dans la console du navigateur.</p>
+                        </div>
+
+                        <!-- layout element - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - --->
+                        <div class="layout__video">
+                            <video preload="none" controls controlsList="nodownload" preload="metadata">
+                                <source src="../assets/intro/ex3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

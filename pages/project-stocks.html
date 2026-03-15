@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Projet : La gestion des stocks</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Projet : La gestion des stocks</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#questions">Énoncé</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#help">Conseils de réalisation</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#solution">Solution</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="questions">
+            <h2>Énoncé</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Réaliser une mini-application front-end de gestion de stocks. L’utilisateur peut ajouter
+                        des produits, modifier les quantités, filtrer/rechercher, et conserver l’état localement.
+                    </p>
+
+                    <div class="separator"></div>
+
+                    <ol>
+
+                        <!-- specifications ---------------------------------------------------------------------------- -->
+                        <li>
+                            <h3>Format des données</h3>
+                            <ul>
+                                <li>
+                                    Un produit est un objet avec les propriétés suivantes :
+                                    <ul>
+                                        <li><span class="comment">id </span>(number ou string)</li>
+                                        <li><span class="comment">name </span>(string)</li>
+                                        <li><span class="comment">quantity </span>(number)</li>
+                                        <li><span class="comment">min </span>(number : seuil d’alerte)</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Les produits sont stockés dans un tableau<span class="comment"> stocks</span>.
+                                </li>
+                                <li>
+                                    Chaque ligne "produit" affichée dans le HTML possède des<span class="comment"> data-attributes </span>:
+                                    <ul>
+                                        <li><span class="comment">data-id </span>pour identifier le produit</li>
+                                        <li><span class="comment">data-action </span>sur les boutons<span class="comment"> inc</span>, <span class="comment"> dec</span></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Le stockage local (navigateur) utilise une clé unique<span class="comment"> "stocks"</span>.
+                                </li>
+                            </ul>
+                        </li>
+
+                        <div class="separator"></div>
+
+                        <!-- specifications ---------------------------------------------------------------------------- -->
+                        <li>
+                            <h3>Fonctionnement</h3>
+                            <ul>
+                                <li>
+                                    Les stocks sont initialisés depuis<span class="comment"> localStorage </span>
+                                    s'il existe, sinon ils sont réinitialisés.
+                                </li>
+                                <li>
+                                    Chaque produit possède des actions : incrémentation du stock, décrémentation
+                                    du stock et suppression.
+                                </li>
+                                <li>Un stock ne peut jamais être négatif.</li>
+                                <li>Si la quantité atteint le minimum, une alerte visuelle le met en évidence.</li>
+                                <li>La page contient :
+                                    <ul>
+                                        <li>une zone de liste de produits (le conteneur)</li>
+                                        <li>une zone de résumé (total produits, nombre d'alertes)</li>
+                                        <li>une zone d'erreur (messages pour l'utilisateur)</li>
+                                        <li>un champ recherche pour filtrer la liste</li>
+                                        <li>un switch ou un checkbox pour afficher uniquement les alertes</li>
+                                        <li>un formulaire de création</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    On utilisera les<span class="comment"> data-attributes </span>pour
+                                    retrouver le produit à modifier ou l'action à effectuer.
+                                </li>
+                                <li>
+                                    Après chaque modification, les données sont stockées
+                                    dans<span class="comment"> localStorage</span>.
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="help">
+            <h2>Conseils de réalisation</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>Créer un tableau<span class="comment"> stocks </span>avec quelques produits.</li>
+                        <li>
+                            Coder les fonctions
+                            <ul>
+                                <li><span class="comment">getStats </span>pour le calcul des données globales</li>
+                                <li>
+                                    <span class="comment">render(stocks) </span>pour l'affichage de la liste et
+                                    du résumé (total, alertes)
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Ajouter des<span class="comment"> data-id </span>sur les produits
+                            et<span class="comment"> data-action </span>sur les boutons.
+                        </li>
+                        <li>Brancher un écouteur sur le conteneur de liste.</li>
+                        <li>
+                            Coder les fonctions<span class="comment"> incStock </span>
+                            et<span class="comment"> decStock </span> en prenant en compte :
+                            <ul>
+                                <li>un enregistrement des données sans rechargement</li>
+                                <li>l'impossibilité d'avoir un stock négatif</li>
+                                <li>
+                                    une utilisation de<span class="comment"> data-id </span>
+                                    et<span class="comment"> data-action</span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Créer le formulaire visuellement, en incluant la zone d'affichage des erreurs.</li>
+                        <li>Créer la fonction<span class="comment"> showError </span>pour afficher les erreurs.</li>
+                        <li>
+                            Coder les fonctions<span class="comment"> addProduct </span>
+                            et<span class="comment"> delProduct </span> en prenant en compte :
+                            <ul>
+                                <li>la validité du formulaire</li>
+                                <li>la gestion des erreurs par des messages clairs</li>
+                                <li>l’enregistrement des données sans rechargement</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Coder les fonctions de filtrage<span class="comment"> filterByName </span>
+                            et<span class="comment"> filterByMin</span>. Les deux filtres se combinent.
+                        </li>
+                        <li>
+                            Pour<span class="comment"> filterByName </span>, rafraîchir la liste 300 ms après la
+                            dernière frappe clavier.
+                        </li>
+                        <li>
+                            Coder les fonctions<span class="comment"> saveToStorage </span>et
+                            <span class="comment"> loadFromStorage</span> en prenant en compte les erreurs.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="solution">
+            <h2>Solution</h2>
+
+            <ol class="steps">
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Initialisation du stock et ajout du<span class="comment"> dataset </span>sur les produits.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution1.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Codage des fonctions de calcul et d'affichage des données globales.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution2.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Utilisation de<span class="comment">addEventListener</span>.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution3.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Codage des fonctions<span class="comment"> incStock </span>
+                            et<span class="comment"> decStock</span>.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution4.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Création du formulaire.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution5.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Affichage des erreurs avec<span class="comment"> showError</span>.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution6.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Codage des fonctions<span class="comment"> addProduct </span>
+                            et<span class="comment"> delProduct</span>.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution7.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Codage des fonctions de filtre.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution8.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Rafraîchissement retardé pour<span class="comment"> filterByName</span>.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution9.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <li class="step">
+                    <span>
+                        <span>
+                            Enregistrement et chargement des données.
+                        </span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-stocks/solution10.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

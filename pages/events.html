@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Gestion des événements</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Gestion des événements</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#addEventListener">Réagir à un événement</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#event">Comprendre l'objet Event</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#propagation">Comprendre la propagation des événements</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#behavior">Contrôler le comportement d'un événement</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#errors">Erreurs fréquentes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#exercises">Exercices</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="addEventListener">
+            <h2>Réagir à un événement</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Un événement est une action détectée par le navigateur : clic, touche clavier, saisie dans un champ,
+                        déplacement de la souris, envoi d’un formulaire, etc.
+                        Pour réagir à un événement, on utilise<span class="comment"> addEventListener</span>.
+                    </p>
+
+                    <ul>
+                        <li>Structure de base :
+                            <pre class="js"><code><span class="word">const</span> btn = document.<span class="function">querySelector</span>(<span class="text">"#btn"</span>);
+
+btn.<span class="function">addEventListener</span>(<span class="text">"click"</span>, () => {
+    console.<span class="function">log</span>(<span class="text">"Clique !"</span>);
+});</code></pre>
+                        </li>
+
+                        <li>Événements associés à la souris :
+                            <ul>
+                                <li><span class="comment">"click"</span></li>
+                                <li><span class="comment">"dblclick"</span></li>
+                                <li><span class="comment">"mouseenter"</span></li>
+                                <li><span class="comment">"mouseleave"</span></li>
+                            </ul>
+                        </li>
+
+                        <li>Événements associés au clavier :
+                            <ul>
+                                <li><span class="comment">"keydown"</span></li>
+                                <li><span class="comment">"keyup"</span></li>
+                            </ul>
+                        </li>
+
+                        <li>Événements associés à un formulaire :
+                            <ul>
+                                <li><span class="comment">"input"</span></li>
+                                <li><span class="comment">"change"</span></li>
+                                <li><span class="comment">"submit"</span></li>
+                            </ul>
+                        </li>
+
+                        <li>Il est parfois préférable de passer par une fonction nommée (utile si on veut retirer
+                            l’écouteur plus tard par exemple) :
+                            <pre class="js"><code><span class="word">function</span> direBonjour() {
+    console.<span class="function">log</span>(<span class="text">"Bonjour"</span>);
+}
+
+btn.<span class="function">addEventListener</span>(<span class="text">"click"</span>, <span class="function">direBonjour</span>);</code></pre>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/addEventListener.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="event">
+            <h2>Comprendre l'objet Event</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Quand un événement se produit, le navigateur appelle la fonction associée et lui fournit un
+                        objet<span class="comment"> Event </span>(souvent noté<span class="comment"> e</span>).
+                        Cet objet contient des informations sur ce qui s’est passé.
+                    </p>
+
+                    <pre class="js"><code><span class="word">const</span> btn = document.<span class="function">querySelector</span>(<span class="text">"#btn"</span>);
+
+btn.<span class="function">addEventListener</span>(<span class="text">"click"</span>, (e) => {
+    console.<span class="function">log</span>(e);
+});</code></pre>
+
+                    <ul>
+                        <li><span class="comment">e.type </span>: type d’événement (ex : <span class="comment">"click"</span>)</li>
+                        <li><span class="comment">e.target </span>: élément sur lequel l’événement a eu lieu</li>
+                        <li><span class="comment">e.currentTarget </span>: élément qui écoute l’événement</li>
+                    </ul>
+
+                    <pre class="js"><code><span class="word">btn</span>.<span class="function">addEventListener</span>(<span class="text">"click"</span>, (e) => {
+    console.<span class="function">log</span>(e.type);  <span class="comment">&nbsp;// "click"</span>
+    console.<span class="function">log</span>(e.target); <span class="comment">&nbsp;// l'élément cliqué</span>
+    console.<span class="function">log</span>(e.currentTarget); <span class="comment">&nbsp;// l'élément qui écoute</span>
+});</code></pre>
+
+                    <p>
+                        <span class="comment">target </span>peut être un enfant, tandis
+                        que<span class="comment"> currentTarget</span> est toujours l’élément sur lequel
+                        l’écouteur a été placé.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/event.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="propagation">
+            <h2>Comprendre la propagation des événements</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Quand on clique sur un élément, l’événement ne concerne pas seulement cet élément : il
+                        "remonte" dans l’arbre du DOM (du plus profond vers les parents). C’est la propagation (bubbling).
+                    </p>
+
+                    <pre class="html"><code>&lt;div id="zone"&gt;
+    &lt;button id="btn"&gt;Bouton&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+                    <pre class="js"><code><span class="word">const</span> zone = document.<span class="function">querySelector</span>(<span class="text">"#zone"</span>);
+<span class="word">const</span> btn = document.<span class="function">querySelector</span>(<span class="text">"#btn"</span>);
+
+zone.<span class="function">addEventListener</span>(<span class="text">"click"</span>, () => { <span class="comment">&nbsp;// déclenchée en deuxième</span>
+    console.<span class="function">log</span>(<span class="text">"zone"</span>);
+});
+
+btn.<span class="function">addEventListener</span>(<span class="text">"click"</span>, () => { <span class="comment">&nbsp;// déclenchée en premier</span>
+    console.<span class="function">log</span>(<span class="text">"bouton"</span>);
+});</code></pre>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/propagation.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="behavior">
+            <h2>Contrôler le comportement d'un événement</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Certains éléments ont un comportement par défaut : un lien ouvre une page, un formulaire
+                        recharge la page, etc. On peut contrôler cela avec<span class="comment"> preventDefault </span>
+                        et<span class="comment"> stopPropagation</span>.
+                    </p>
+
+                    <ul>
+                        <li>Empêcher le comportement par défaut :
+                            <pre class="js"><code><span class="word">const</span> lien = document.<span class="function">querySelector</span>(<span class="text">"a"</span>);
+
+lien.<span class="function">addEventListener</span>(<span class="text">"click"</span>, (e) => {
+    e.<span class="function">preventDefault</span>();
+    console.<span class="function">log</span>(<span class="text">"Lien bloqué"</span>);
+});</code></pre>
+                        </li>
+
+                        <li>Stopper la propagation :
+                            <pre class="js"><code><span class="word">const</span> zone = document.<span class="function">querySelector</span>(<span class="text">"#zone"</span>);
+<span class="word">const</span> btn = document.<span class="function">querySelector</span>(<span class="text">"#btn"</span>);
+
+zone.<span class="function">addEventListener</span>(<span class="text">"click"</span>, () => {
+    console.<span class="function">log</span>(<span class="text">"zone"</span>);
+});
+
+btn.<span class="function">addEventListener</span>(<span class="text">"click"</span>, (e) => {
+    e.<span class="function">stopPropagation</span>();
+    console.<span class="function">log</span>(<span class="text">"bouton seul"</span>);
+});</code></pre>
+                        </li>
+                    </ul>
+
+                    <p>
+                        À utiliser avec parcimonie :<span class="comment"> stopPropagation </span>peut rendre le code
+                        difficile à comprendre si plusieurs écouteurs sont impliqués.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/behavior.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="errors">
+            <h2>Erreurs fréquentes</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>
+                            Exécuter la fonction au lieu de la passer
+                            :<span class="error"> l’événement ne fonctionne pas</span>.
+                        </li>
+                        <li>
+                            Oublier que<span class="comment"> e.target </span>peut être un enfant
+                            :<span class="error"> mauvais élément manipulé</span>.
+                        </li>
+                        <li>
+                            Mettre un écouteur sur un élément<span class="comment"> null </span>
+                            :<span class="error"> erreur si la sélection DOM est mauvaise</span>.
+                        </li>
+                        <li>
+                            Utiliser trop de<span class="comment"> stopPropagation </span>
+                            :<span class="error"> logique difficile à suivre</span>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="exercises">
+            <h2>Exercices</h2>
+            <ol>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire du code :</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="html"><code>&lt;div id="zone"&gt;
+    &lt;button id="btn"&gt;OK&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+                            <pre class="js"><code>const zone = document.querySelector("#zone");
+const btn = document.querySelector("#btn");
+
+zone.addEventListener("click", () => {
+    console.log("zone");
+});
+
+btn.addEventListener("click", () => {
+    console.log("btn");
+});</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire et écrire du code : corriger les erreurs du code suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="html"><code>&lt;button id="btn"&gt;Clique&lt;/button&gt;</code></pre>
+
+                            <pre class="js"><code>const btn = document.querySelectorAll("#btn");
+
+btn.addEventListener("click", () => {
+    log("OK");
+});</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Écrire du code : coder le programme suivant.</h3>
+                    <div class="layout">
+
+                        <div class="layout__text">
+                            <ul>
+                                <li>Créer une variable<span class="comment"> compteur </span>initialisée à 0.</li>
+                                <li>Ajouter un écouteur<span class="comment"> click </span>sur un bouton.</li>
+                                <li>À chaque clic :
+                                    <ul>
+                                        <li>incrémenter le compteur,</li>
+                                        <li>afficher sa valeur dans la console,</li>
+                                        <li>mettre à jour le texte d’un élément de la page pour afficher le compteur.</li>
+                                    </ul>
+                                </li>
+                                <li>Si le compteur dépasse 10, ajouter une classe<span class="comment"> warning</span>.</li>
+                            </ul>
+                        </div>
+
+                        <div class="layout__video">
+                            <video preload="none" controls controlsList="nodownload" preload="metadata">
+                                <source src="../assets/events/ex3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

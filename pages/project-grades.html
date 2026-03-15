@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Projet : Le bulletin semestriel</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Projet : Le bulletin semestriel</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#questions">Énoncé</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#help">Conseils de réalisation</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#solution">Solution</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="questions">
+            <h2>Énoncé</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Réaliser un programme JavaScript simulant le bilan semestriel pour une classe. Pour chaque
+                        élève, on doit calculer sa moyenne, sa mention et indiquer son classement.
+                    </p>
+
+                    <div class="separator"></div>
+
+                    <ol>
+
+                        <!-- specifications ---------------------------------------------------------------------------- -->
+                        <li>
+                            <h3>Format des données</h3>
+                            <ul>
+                                <li>Les élèves sont stockés dans un tableau.</li>
+                                <li>Chaque élève est un objet avec :
+                                    <ul>
+                                        <li>un prénom (string)</li>
+                                        <li>un nom (string)</li>
+                                        <li>un relevé de notes (tableau de nombres)</li>
+                                    </ul>
+                                </li>
+                                <li>Les notes sont des nombres (0 à 20).</li>
+                                <li>Les éléments calculés peuvent être ajoutés aux données.</li>
+                            </ul>
+                        </li>
+
+                        <div class="separator"></div>
+
+                        <!-- specifications ---------------------------------------------------------------------------- -->
+                        <li>
+                            <h3>Fonctionnement</h3>
+                            <ul>
+                                <li>Le programme classe les élèves par moyenne décroissante.</li>
+
+                                <li>Pour chaque élève, il affiche :
+                                    <ul>
+                                        <li>
+                                            Classement (en cas d'égalité de moyenne, les élèves ont le même rang et
+                                            sont affichés par ordre alphabétique)
+                                        </li>
+                                        <li>Nom + prénom</li>
+                                        <li>Moyenne (arrondie à 2 décimales)</li>
+                                        <li>Mention</li>
+                                    </ul>
+                                </li>
+
+                                <li>La mention est calculée selon la moyenne :
+                                    <ul>
+                                        <li>"Admis mention Excellent" si moyenne ≥ 18</li>
+                                        <li>"Admis mention Très bien" si moyenne ≥ 16</li>
+                                        <li>"Admis mention Bien" si moyenne ≥ 14</li>
+                                        <li>"Admis mention Assez Bien" si moyenne ≥ 12</li>
+                                        <li>"Admis" si moyenne ≥ 10</li>
+                                        <li>"Ajourné" dans les autres cas</li>
+                                    </ul>
+                                </li>
+
+                                <li>Le programme affiche le bilan de la classe :
+                                    <ul>
+                                        <li>la moyenne générale de la classe</li>
+                                        <li>le nombre d'élèves ayant obtenu chaque type d'appréciation</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="help">
+            <h2>Conseils de réalisation</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>Créer les données (5 élèves, 5 notes chacun).</li>
+                        <li>
+                            Écrire une fonction<span class="comment"> moyenne </span>qui prend un tableau de nombres et
+                            renvoie la moyenne de l'ensemble.
+                        </li>
+                        <li>
+                            Écrire une fonction<span class="comment"> mention </span>qui prend une moyenne et renvoie
+                            la mention adéquate.
+                        </li>
+                        <li>
+                            Ajouter une propriété<span class="comment"> moyenne </span>et une
+                            propriété<span class="comment"> mention </span>pour chaque élève.
+                        </li>
+                        <li>Afficher un résultat propre avec une template literal.</li>
+                        <li>Calculer les statistiques globales de la classe.</li>
+                        <li>Établir le classement :
+                            <ul>
+                                <li>créer une copie du tableau avant de trier (pour ne pas modifier l’original).</li>
+                                <li>trier sur la moyenne décroissante.</li>
+                                <li>ajouter un tri secondaire sur le nom en cas d'égalité.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="solution">
+            <h2>Solution</h2>
+
+            <ol class="steps">
+
+                <!-- step ------------------------------------------------------------------------------------------ -->
+                <li class="step">
+                    <span>
+                        <span>Initialisation des données (élèves et notes).</span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-grades/solution1.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <!-- step ------------------------------------------------------------------------------------------ -->
+                <li class="step">
+                    <span>
+                        <span>Codage de la fonction<span class="comment"> moyenne </span>et ajout de la propriété.</span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-grades/solution2.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <!-- step ------------------------------------------------------------------------------------------ -->
+                <li class="step">
+                    <span>
+                        <span>Codage de la fonction<span class="comment"> mention </span>et ajout de la propriété.</span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-grades/solution3.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <!-- step ------------------------------------------------------------------------------------------ -->
+                <li class="step">
+                    <span>
+                        <span>Affichage pour chaque élève : identité, moyenne, appréciation.</span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-grades/solution4.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <!-- step ------------------------------------------------------------------------------------------ -->
+                <li class="step">
+                    <span>
+                        <span>Calcul des statistiques globales de la classe.</span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-grades/solution5.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <!-- step ------------------------------------------------------------------------------------------ -->
+                <li class="step">
+                    <span>
+                        <span>Création du classement.</span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-grades/solution6.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+
+                <!-- step ------------------------------------------------------------------------------------------ -->
+                <li class="step">
+                    <span>
+                        <span>Gestion des égalités.</span>
+                        <video preload="none" controls controlsList="nodownload" preload="metadata">
+                            <source src="../assets/project-grades/solution7.mp4" type="video/mp4">
+                        </video>
+                    </span>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

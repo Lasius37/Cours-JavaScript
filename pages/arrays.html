@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Tableaux (bases)</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Tableaux : bases</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#create">Créer un tableau</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#read">Lire un tableau</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#update">Modifier un tableau</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#browse">Parcourir un tableau</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#errors">Erreurs fréquentes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#exercises">Exercices</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="create">
+            <h2>Créer un tableau</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Un tableau (<span class="comment">array</span>) permet de stocker plusieurs valeurs dans une
+                        seule variable, en conservant un ordre.
+                    </p>
+
+                    <ul>
+                        <li>Créer un tableau vide :
+                            <pre class="js"><code><span class="word">const</span> notes = [];</code></pre>
+                        </li>
+
+                        <li>Créer un tableau avec des valeurs :
+                            <pre class="js"><code><span class="word">const</span> fruits = [<span class="text">"pomme"</span>, <span class="text">"banane"</span>, <span class="text">"orange"</span>];
+<span class="word">const</span> nombres = [<span class="number">3</span>, <span class="number">7</span>, <span class="number">12</span>];</code></pre>
+                        </li>
+
+                        <li>Tableau “mixte” (déconseillé) :
+                            <pre class="js"><code><span class="word">const</span> data = [<span class="text">"Alice"</span>, <span class="number">12</span>, <span class="word">true</span>];</code></pre>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/arrays/create.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="read">
+            <h2>Lire un tableau</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Les éléments d’un tableau sont repérés par un<span class="comment"> index </span>(position),
+                        qui commence toujours à<span class="comment"> 0</span>.
+                    </p>
+
+                    <ul>
+                        <li>Accéder à un élément :
+                            <pre class="js"><code><span class="word">const</span> fruits = [<span class="text">"pomme"</span>, <span class="text">"banane"</span>, <span class="text">"orange"</span>];
+
+console.<span class="function">log</span>(fruits[<span class="number">0</span>]); <span class="comment">&nbsp;// "pomme"</span>
+console.<span class="function">log</span>(fruits[<span class="number">2</span>]); <span class="comment">&nbsp;// "orange"</span></code></pre>
+                        </li>
+
+                        <li>Connaître la taille (nombre d’éléments) :
+                            <pre class="js"><code>console.<span class="function">log</span>(fruits.length); <span class="comment">&nbsp;// 3</span></code></pre>
+                        </li>
+
+                        <li>Accéder au dernier élément :
+                            <pre class="js"><code><span class="word">const</span> dernier = fruits[fruits.length - <span class="number">1</span>];
+console.<span class="function">log</span>(dernier); <span class="comment">&nbsp;// "orange"</span></code></pre>
+                        </li>
+                    </ul>
+
+                    <p>Si l'index qui n’existe pas, JavaScript renvoie<span class="comment"> undefined</span>.</p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/arrays/read.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="update">
+            <h2>Modifier un tableau</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        On peut modifier un tableau en changeant un élément, en ajoutant, ou en supprimant des éléments.
+                    </p>
+
+                    <ul>
+                        <li>Modifier une valeur (écriture par index) :
+                            <pre class="js"><code><span class="word">const</span> fruits = [<span class="text">"pomme"</span>, <span class="text">"banane"</span>, <span class="text">"orange"</span>];
+fruits[<span class="number">1</span>] = <span class="text">"fraise"</span>;
+
+console.<span class="function">log</span>(fruits); <span class="comment">&nbsp;// "banane" est remplacé par "fraise"</span></code></pre>
+                        </li>
+
+                        <li>Ajouter à la fin :<span class="comment"> push()</span>
+                            <pre class="js"><code><span class="word">const</span> notes = [<span class="number">10</span>, <span class="number">12</span>];
+notes.<span class="function">push</span>(<span class="number">15</span>);
+
+console.<span class="function">log</span>(notes); <span class="comment">&nbsp;// [10, 12, 15]</span></code></pre>
+                        </li>
+
+                        <li>Retirer le dernier élément :<span class="comment"> pop()</span>
+                            <pre class="js"><code><span class="word">const</span> dernier = notes.<span class="function">pop</span>();
+console.<span class="function">log</span>(dernier); <span class="comment">&nbsp;// 15</span>
+console.<span class="function">log</span>(notes); <span class="comment">&nbsp;// [10, 12]</span></code></pre>
+                        </li>
+
+                        <li>Ajouter au début :<span class="comment"> unshift()</span>
+                            <pre class="js"><code><span class="word">const</span> file = [<span class="text">"B"</span>, <span class="text">"C"</span>];
+file.<span class="function">unshift</span>(<span class="text">"A"</span>); <span class="comment">&nbsp;// ajoute "A" au début</span></code></pre>
+                        </li>
+
+                        <li>Retirer au début :<span class="comment"> shift()</span>
+                            <pre class="js"><code><span class="word">const</span> file = [<span class="text">"A"</span>, <span class="text">"B"</span>, <span class="text">"C"</span>];
+<span class="word">const</span> premier = file.<span class="function">shift</span>(); <span class="comment">&nbsp;// retire "A"</span></code></pre>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Remarque : même si un tableau est déclaré avec<span class="comment"> const</span>, on peut
+                        modifier son contenu. Ce que<span class="comment"> const </span>empêche, c’est de réassigner
+                        la variable à un autre tableau.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/arrays/update.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="browse">
+            <h2>Parcourir un tableau</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Parcourir un tableau consiste à accéder successivement à chacun de ses éléments. On utilise
+                        cela pour afficher des valeurs, faire des calculs ou appliquer une condition sur chaque élément.
+                    </p>
+
+                    <ul>
+                        <li>Boucle classique (si besoin des<span class="comment"> index</span>) :
+                            <pre class="js"><code><span class="word">const</span> notes = [<span class="number">8</span>, <span class="number">12</span>, <span class="number">15</span>];
+
+<span class="word">for</span> (<span class="word">let</span> i = <span class="number">0</span>; i < notes.length; i++) {
+    console.<span class="function">log</span>(notes[i]);
+}</code></pre>
+                        </li>
+
+                        <li>Boucle<span class="comment"> for...of </span>(si pas besoin des<span class="comment"> index</span>) :
+                            <pre class="js"><code><span class="word">for</span> (<span class="word">const</span> note <span class="word">of</span> notes) {
+    console.<span class="function">log</span>(note);
+}</code></pre>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/arrays/browse.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="errors">
+            <h2>Erreurs fréquentes</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>
+                            Oublier que les index commencent à<span class="comment"> 0 </span>:<span class="error"> comportement inattendu</span>.
+                        </li>
+                        <li>
+                            Confondre<span class="comment"> length </span>et dernier index :<span class="error"> comportement inattendu</span>.
+                        </li>
+                        <li>
+                            Lire un index inexistant et ne pas gérer<span class="comment"> undefined </span>:<span class="error"> risque d'erreurs multiples</span>.
+                        </li>
+                        <li>
+                            Confondre<span class="comment"> for...in </span>et<span class="comment"> for...of </span>:<span class="error"> parcours incorrect du tableau</span>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="exercises">
+            <h2>Exercices</h2>
+            <ol>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire du code : que va afficher la console ?</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code>const tab = [3, 7, 12];
+
+console.log(tab.length);
+console.log(tab[0]);
+console.log(tab[tab.length - 1]);</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire et écrire du code : corriger les erreurs du code suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code>const fruits = ["pomme", >"banane"];
+
+console.log(fruits[2].length);
+fruits.push();</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Écrire du code : coder le programme suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <ul>
+                                <li>Créer un tableau de notes contenant : 8, 12, 15, 9, 18.</li>
+                                <li>Calculer la moyenne avec une boucle.</li>
+                                <li>Afficher la moyenne dans la console.</li>
+                            </ul>
+                        </div>
+
+                        <div class="layout__video">
+                            <video preload="none" controls controlsList="nodownload" preload="metadata">
+                                <source src="../assets/arrays/ex3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>

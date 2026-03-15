@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="module" src="../js/script.js" defer></script>
+    <title>Objets JavaScript</title>
+</head>
+
+<body>
+
+    <!-- ***************************************************************************************************************
+         HEADER
+    **************************************************************************************************************** -->
+    <header>
+        <h1>Objets JavaScript</h1>
+
+        <!-- navbar
+             ======================================================================================================= -->
+        <nav>
+            <ul class="navbar"></ul>
+        </nav>
+    </header>
+
+    <!-- ***************************************************************************************************************
+         ASIDE
+    **************************************************************************************************************** -->
+    <aside>
+
+        <!-- sidebar
+             ======================================================================================================= -->
+        <nav class="sidebar">
+
+            <!-- sidebar group ------------------------------------------------------------------------------------- -->
+            <section class="sidebar__group">
+                <h2>Dans cette page</h2>
+                <ul>
+                    <li class="sidebar__element">
+                        <a href="#litteral">Créer un objet</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#properties">Accéder aux propriétés</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#browse">Parcourir un objet</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#methods">Ajouter des méthodes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#this">Comprendre<span> this</span></a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#reference">Comprendre la notion de référence</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#constructor">Créer des objets avec un constructeur</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#errors">Erreurs fréquentes</a>
+                    </li>
+                    <li class="sidebar__element">
+                        <a href="#exercises">Exercices</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </aside>
+
+    <!-- ***************************************************************************************************************
+         MAIN
+    **************************************************************************************************************** -->
+    <main>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="litteral">
+            <h2>Créer un objet</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Un objet permet de regrouper plusieurs informations qui décrivent une "même chose". Chaque
+                        information est stockée dans une propriété sous la forme<span class="comment"> clé : valeur</span>.
+                    </p>
+
+                    <ul>
+                        <li>Créer un objet "littéral" :
+                            <pre class="js"><code><span class="word">const</span> eleve = {
+    nom: <span class="text">"Alice"</span>,
+    age: <span class="number">12</span>,
+    classe: <span class="text">"6eA"</span>
+};</code></pre>
+                        </li>
+
+                        <li>Créer un objet vide puis ajouter des propriétés :
+                            <pre class="js"><code><span class="word">const</span> eleve2 = {};
+eleve2.nom = <span class="text">"Basile"</span>;
+eleve2.age = <span class="number">13</span>;</code></pre>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Un objet est utile pour stocker un groupe de données cohérentes ensemble, et qui doivent être
+                        nommées (nom, âge, etc.).
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/litteral.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="properties">
+            <h2>Accéder aux propriétés</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Il existe deux manières principales d’accéder aux propriétés d’un objet.
+                    </p>
+
+                    <ul>
+                        <li>Notation "point" :
+                            <pre class="js"><code><span class="word">const</span> eleve = {
+    nom: <span class="text">"Alice"</span>,
+    age: <span class="number">12</span>
+};
+
+console.<span class="function">log</span>(eleve.nom); <span class="comment">&nbsp;// "Alice"</span>
+console.<span class="function">log</span>(eleve.age); <span class="comment">&nbsp;// 12</span></code></pre>
+                        </li>
+
+                        <li>Notation "crochets" (utile si la clé est dans une variable) :
+                            <pre class="js"><code><span class="word">const</span> cle = <span class="text">"nom"</span>;
+
+console.<span class="function">log</span>(eleve[cle]); <span class="comment">&nbsp;// "Alice"</span></code></pre>
+                        </li>
+
+                        <li>Modifier une propriété :
+                            <pre class="js"><code>eleve.age = <span class="number">13</span>;</code></pre>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Si une propriété n’existe pas, JavaScript renvoie <span class="comment">undefined</span>.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/properties.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="browse">
+            <h2>Parcourir un objet</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Pour parcourir un objet, on utilise<span class="comment"> for...in</span>.
+                        Cette boucle renvoie les<span class="comment"> clés </span>de l’objet.
+                    </p>
+
+                    <ul>
+                        <li>Afficher les clés :
+                            <pre class="js"><code><span class="word">const</span> eleve = {
+    nom: <span class="text">"Alice"</span>,
+    age: <span class="number">12</span>,
+    classe: <span class="text">"6eA"</span>
+};
+
+<span class="word">for</span> (<span class="word">const</span> cle <span class="word">in</span> eleve) {
+    console.<span class="function">log</span>(cle);
+}</code></pre>
+                        </li>
+
+                        <li>Afficher les clés et les valeurs :
+                            <pre class="js"><code><span class="word">for</span> (<span class="word">const</span> cle <span class="word">in</span> eleve) {
+    console.<span class="function">log</span>(cle + <span class="text">" : "</span> + eleve[cle]);
+}</code></pre>
+                        </li>
+                    </ul>
+
+                    <p>Attention : dans ce cas, la notation "point" ne fonctionne pas avec une clé dans une variable.</p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/browse.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="methods">
+            <h2>Ajouter des méthodes</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Une méthode est une fonction stockée dans une propriété. Elle permet d’associer des
+                        comportements à un objet.
+                    </p>
+
+                    <ul>
+                        <li>Définir une méthode :
+                            <pre class="js"><code><span class="word">const</span> eleve = {
+    nom: <span class="text">"Alice"</span>,
+    age: <span class="number">12</span>,
+    direBonjour: <span class="word">function</span> () {
+        console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
+    }
+};</code></pre>
+                        </li>
+
+                        <li>Accéder à une méthode :
+                            <pre class="js"><code>eleve.<span class="function">direBonjour</span>();</code></pre>
+                        </li>
+
+                        <li>Notation plus courte :
+                            <pre class="js"><code><span class="word">const</span> eleve2 = {
+    nom: <span class="text">"Basile"</span>,
+    <span class="function">direBonjour</span>() {
+        console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
+    }
+};</code></pre>
+
+                        <li>Une méthode peut aussi renvoyer une valeur avec<span class="comment"> return</span>.
+                            <pre class="js"><code><span class="word">const</span> calculerAnneeNaissance = (age) => <span class="number">2026</span> - age;</code></pre>
+
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/methods.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="this">
+            <h2>Comprendre<span> this</span></h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        <span class="comment">this </span>est un mot-clé qui désigne "l’objet courant".
+                        Dans une méthode, il permet d’accéder aux propriétés du même objet.
+                    </p>
+
+                    <pre class="js"><code><span class="word">const</span> eleve = {
+    nom: <span class="text">"Alice"</span>,
+    age: <span class="number">12</span>,
+    presentation() {
+        console.<span class="function">log</span>(<span class="text">`Je m'appelle ${this.nom} et j'ai ${this.age} ans.`</span>);
+    }
+};
+
+eleve.<span class="function">presentation</span>();</code></pre>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/this.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="reference">
+            <h2>Comprendre la notion de référence</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        En JavaScript, les objets sont manipulés par référence. Cela signifie que la variable ne
+                        contient pas l’objet, mais un lien vers lui.
+                    </p>
+
+                    <ul>
+                        <li>Exemple : deux variables pointent vers le même objet :
+                            <pre class="js"><code><span class="word">const</span> a = { x: <span class="number">1</span> };
+<span class="word">const</span> b = a;
+
+b.x = <span class="number">99</span>;
+
+console.<span class="function">log</span>(a.x); <span class="comment">&nbsp;// 99</span></code></pre>
+                        </li>
+
+                        <li>Comparer deux objets :
+                            <pre class="js"><code><span class="word">const</span> o1 = { x: <span class="number">1</span> };
+<span class="word">const</span> o2 = { x: <span class="number">1</span> };
+
+console.<span class="function">log</span>(o1 === o2); <span class="comment">&nbsp;// false</span></code></pre>
+                        </li>
+                    </ul>
+
+                    <p>
+                        <span class="comment">=== </span>compare les références, pas le contenu. Deux objets
+                        identiques en apparence ne sont pas égaux s’ils ne sont pas la même référence.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/reference.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="constructor">
+            <h2>Créer des objets avec un constructeur</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <p>
+                        Pour créer plusieurs objets du même "type", on utilise un constructeur
+                        avec<span class="comment"> new</span>.
+                    </p>
+
+                    <pre class="js"><code><span class="word">function</span> Eleve(nom, age) {
+    this.nom = nom;
+    this.age = age;
+    this.presentation = <span class="word">function</span> () {
+        console.<span class="function">log</span>(<span class="text">`Je m'appelle ${this.nom}`</span>);
+    };
+}
+
+<span class="word">const</span> e1 = <span class="word">new</span> Eleve(<span class="text">"Alice"</span>, <span class="number">12</span>);
+<span class="word">const</span> e2 = <span class="word">new</span> Eleve(<span class="text">"Basile"</span>, <span class="number">13</span>);
+
+e1.presentation();
+e2.presentation();</code></pre>
+
+                    <p>
+                        Ici,<span class="comment"> this </span>représente l’objet créé par<span class="comment"> new</span>.
+                    </p>
+                </div>
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__video">
+                    <video preload="none" controls controlsList="nodownload" preload="metadata">
+                        <source src="../assets/objects/constructor.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="errors">
+            <h2>Erreurs fréquentes</h2>
+            <div class="layout">
+
+                <!-- layout element -------------------------------------------------------------------------------- -->
+                <div class="layout__text">
+                    <ul>
+                        <li>
+                            Confondre notation point et crochets :
+                            <span class="error">lecture incorrecte d’une propriété</span>.
+                        </li>
+                        <li>
+                            Utiliser<span class="comment"> objet.cle </span> au lieu de <span class="comment"> objet[cle] </span>
+                            :<span class="error">renvoie souvent undefined</span>.
+                        </li>
+                        <li>
+                            Oublier que les objets sont des références
+                            :<span class="error"> modifier un objet "copié" modifie l’original</span>.
+                        </li>
+                        <li>
+                            Utiliser<span class="comment"> this </span>hors d’une méthode appelée comme
+                            <span class="comment"> objet.methode() </span>
+                            :<span class="error">this ne pointe pas vers l’objet attendu</span>.
+                        </li>
+                        <li>
+                            Oublier<span class="comment"> new </span>avec un constructeur
+                            :<span class="error">objet non créé comme prévu</span>.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- content section
+             ======================================================================================================= -->
+        <section id="exercises">
+            <h2>Exercices</h2>
+            <ol>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire du code : que va afficher la console ?</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code>const eleve = {
+    nom: "Alice",
+    age: 12,
+    classe: "6eA"
+};
+
+console.log(eleve.nom);
+console.log(eleve["age"]);</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Lire et écrire du code : corriger les erreurs du code suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <pre class="js"><code>const eleve = {
+    nom: "Basile",
+    age: 13,
+    presentation() {
+        console.log(`Je m'appelle ${nom}`);
+    }
+};
+
+const cle = "age";
+console.log(eleve.cle);</code></pre>
+                        </div>
+                    </div>
+                </li>
+
+                <div class="separator"></div>
+
+                <!-- exercise -------------------------------------------------------------------------------------- -->
+                <li>
+                    <h3>Écrire du code : coder le programme suivant.</h3>
+                    <div class="layout">
+                        <div class="layout__text">
+                            <ul>
+                                <li>Créer un objet<span class="comment"> produit </span>avec : nom, prix, stock.</li>
+                                <li>Ajouter une méthode<span class="comment"> vendre </span>qui diminue le stock de 1 si possible.</li>
+                                <li>Si le stock est à 0, afficher un message dans la console.</li>
+                                <li>Tester la méthode plusieurs fois.</li>
+                                <li>Ajouter une méthode afficher() qui affiche l'état du produit.</li>
+                            </ul>
+                        </div>
+
+                        <div class="layout__video">
+                            <video preload="none" controls controlsList="nodownload" preload="metadata">
+                                <source src="../assets/objects/ex3.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+    </main>
+
+    <!-- ***************************************************************************************************************
+         FOOTER
+    **************************************************************************************************************** -->
+    <footer>
+        <div>© Copyright - Guillaume Peyrard</div>
+    </footer>
+</body>
+</html>
