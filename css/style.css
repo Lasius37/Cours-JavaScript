@@ -312,6 +312,12 @@ h2 span, h3 span, .sidebar__element a span {
     border-left: 0.3rem solid var(--js);
 }
 
+.layout__text .console {
+    background-color: var(--console-light);
+    border-left: 0.3rem solid var(--console);
+    color: white;
+}
+
 .layout__text span {
     color: var(--comment-color);
 }
@@ -326,7 +332,7 @@ h2 span, h3 span, .sidebar__element a span {
     margin-left: 1.4rem;
 }
 
-.layout__text li span, .layout__text p span, .layout__text span, .navbar a span, .layout__text td span, .step span.comment {
+.layout__text li span, .layout__text p span, .navbar a span, .layout__text td span, .step span.comment {
     font-size: var(--code-size);
     font-family: var(--code-font);
 }
@@ -373,12 +379,6 @@ h2 span, h3 span, .sidebar__element a span {
     color: var(--error-color);
 }
 
-kbd {
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 5px;
-}
-
 /* *********************************************************************************************************************
 ***                                                     FOOTER                                                       ***
 ********************************************************************************************************************* */
@@ -412,8 +412,6 @@ kbd {
     transform: translateX(-50%);
     max-height: 160px;
 }
-
-
 
 /* *********************************************************************************************************************
 ***                                                     FOOTER                                                       ***
