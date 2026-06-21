@@ -286,7 +286,7 @@ console.<span class="function">log</span>(eleve[cle]); <span class="comment">&nb
                     <pre class="js"><code><span class="word">const</span> eleve = {
     nom: <span class="text">"Alice"</span>,
     age: <span class="number">12</span>,
-    presentation() {
+    <span class="function">presentation</span>() {
         console.<span class="function">log</span>(<span class="text">`Je m'appelle ${this.nom} et j'ai ${this.age} ans.`</span>);
     }
 };
@@ -365,7 +365,7 @@ console.<span class="function">log</span>(o1 === o2); <span class="comment">&nbs
                     <pre class="js"><code><span class="word">function</span> Eleve(nom, age) {
     this.nom = nom;
     this.age = age;
-    this.presentation = <span class="word">function</span> () {
+    this.<span class="function">presentation</span> = <span class="word">function</span> () {
         console.<span class="function">log</span>(<span class="text">`Je m'appelle ${this.nom}`</span>);
     };
 }
@@ -373,8 +373,8 @@ console.<span class="function">log</span>(o1 === o2); <span class="comment">&nbs
 <span class="word">const</span> e1 = <span class="word">new</span> Eleve(<span class="text">"Alice"</span>, <span class="number">12</span>);
 <span class="word">const</span> e2 = <span class="word">new</span> Eleve(<span class="text">"Basile"</span>, <span class="number">13</span>);
 
-e1.presentation();
-e2.presentation();</code></pre>
+e1.<span class="function">presentation</span>();
+e2.<span class="function">presentation</span>();</code></pre>
 
                     <p>
                         Ici,<span class="comment"> this </span>représente l’objet créé par<span class="comment"> new</span>.
