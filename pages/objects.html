@@ -232,27 +232,24 @@ console.<span class="function">log</span>(eleve[cle]); <span class="comment">&nb
                             <pre class="js"><code><span class="word">const</span> eleve = {
     nom: <span class="text">"Alice"</span>,
     age: <span class="number">12</span>,
-    <span class="function">direBonjour</span>: <span class="word">function</span> () {
+    <span class="function">direBonjour</span>: <span class="word">function</span> () {  <span class="comment">// effectue une action</span>
         console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
     }
+    <span class="function">calculerAnneeNaissance</span>: <span class="word">function</span> () {  <span class="comment">// renvoie une valeur avec return</span>
+        <span class="word">const</span> anneeActuelle = <span class="word">new</span> Date().<span class="function">getFullYear</span>();
+        <span class="word">return</span> anneeActuelle - this.age;
+    }
 };</code></pre>
+                        </li>
+
+                        <li>Notation plus courte de la méthode (le reste de l'objet n'est pas présenté) :
+                            <pre class="js"><code>    <span class="function">direBonjour</span>() {
+        console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
+    }</code></pre>
                         </li>
 
                         <li>Accéder à une méthode :
                             <pre class="js"><code>eleve.<span class="function">direBonjour</span>();</code></pre>
-                        </li>
-
-                        <li>Notation plus courte :
-                            <pre class="js"><code><span class="word">const</span> eleve2 = {
-    nom: <span class="text">"Basile"</span>,
-    <span class="function">direBonjour</span>() {
-        console.<span class="function">log</span>(<span class="text">"Bonjour !"</span>);
-    }
-};</code></pre>
-
-                        <li>Une méthode peut aussi renvoyer une valeur avec<span class="comment"> return</span>.
-                            <pre class="js"><code><span class="word">const</span> calculerAnneeNaissance = (age) => <span class="number">2026</span> - age;</code></pre>
-
                         </li>
                     </ul>
                 </div>
@@ -287,7 +284,7 @@ console.<span class="function">log</span>(eleve[cle]); <span class="comment">&nb
     }
 };
 
-eleve.<span class="function">presentation</span>();</code></pre>
+eleve.<span class="function">presentation</span>();  <span class="comment">affiche "Je m'appelle Alice et j'ai 12 ans."</span></code></pre>
                 </div>
 
                 <!-- layout element -------------------------------------------------------------------------------- -->
