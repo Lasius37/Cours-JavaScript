@@ -1,0 +1,64 @@
+<details id="menu-container">
+    <summary id="menu-opener" aria-label="Menu principal">
+        <i class="bi bi-list" aria-hidden="true"></i>
+    </summary>
+
+    <div id="full-menu">
+        <a class="menu" id="home-btn" href="{{ '/index.html' | relative_url }}">
+            <i class="bi bi-house-fill"></i>
+            <span>Accueil</span>
+        </a>
+
+        <div class="menu" id="main-menu">
+            <details class="sub-menu" name="sub-menu">
+                <summary class="sub-menu-opener">
+                    <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                    <span>Concepts de base</span>
+                </summary>
+
+                <ul>
+                    <li><a href="{{ '/pages/intro.html' | relative_url }}">Introduction</a></li>
+                    <li><a href="{{ '/pages/variables.html' | relative_url }}">Variables</a></li>
+                    <li><a href="{{ '/pages/manipulate.html' | relative_url }}">Manipulation de variables</a></li>
+                    <li><a href="{{ '/pages/conditions.html' | relative_url }}">Structures conditionnelles</a></li>
+                    <li><a href="{{ '/pages/loops.html' | relative_url }}">Boucles</a></li>
+                    <li><a href="{{ '/pages/project-calc.html' | relative_url }}">Projet : la calculatrice</a></li>
+                </ul>
+            </details>
+
+            <details class="sub-menu" name="sub-menu">
+                <summary class="sub-menu-opener">
+                    <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                    <span>Concepts intermédiaires</span>
+                </summary>
+
+                <ul>
+                    <li><a href="{{ '/pages/functions.html' | relative_url }}">Ffonctions</a></li>
+                    <li><a href="{{ '/pages/arrays.html' | relative_url }}">Tableaux : bases</a></li>
+                    <li><a href="{{ '/pages/objects.html' | relative_url }}">Objets JavaScript</a></li>
+                    <li><a href="{{ '/pages/strings.html' | relative_url }}">Chaînes de caractères</a></li>
+                    <li><a href="{{ '/pages/arrays2.html' | relative_url }}">Tableaux : avancé</a></li>
+                    <li><a href="{{ '/pages/project-grades.html' | relative_url }}">Projet : le bulletin semestriel</a></li>
+                </ul>
+            </details>
+
+            <details class="sub-menu" name="sub-menu">
+                <summary class="sub-menu-opener">
+                    <i class="bi bi-chevron-down" aria-hidden="true"></i>
+                    <span>Concepts avancés</span>
+                </summary>
+
+                <ul>
+                    <li><a href="{{ '/pages/dom.html' | relative_url }}">Manipulation du DOM</a></li>
+                    <li><a href="{{ '/pages/events.html' | relative_url }}">Gestion des événements</a></li>
+                    <li><a href="{{ '/pages/interactions.html' | relative_url }}">Interactions avec le DOM</a></li>
+                    <li><a href="{{ '/pages/timers.html' | relative_url }}">Timers JavaScript</a></li>
+                    <li><a href="{{ '/pages/forms.html' | relative_url }}">Formulaires dynamiques</a></li>
+                    <li><a href="{{ '/pages/storage.html' | relative_url }}">Stockage des données</a></li>
+                    <li><a href="{{ '/pages/errors.html' | relative_url }}">Gestion des erreurs</a></li>
+                    <li><a href="{{ '/pages/project-stocks.html' | relative_url }}">Projet : la gestion des stocks</a></li>
+                </ul>
+            </details>
+        </div>
+    </div>
+</details>

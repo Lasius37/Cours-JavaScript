@@ -1,1 +1,1 @@
-# Cours-JavaScript
+# Cours-Python
